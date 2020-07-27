@@ -1,0 +1,20 @@
+Path Generation
+
+line 54-55: the lane and initial velocity is initialezed to 1 and 0 respectively. The enables the car's velocity to gradually rise and prevent an initial jerk. 
+A lane of 1 refers to the center lane.
+
+line 102 - 107 : we always initialize the cars' current value with the previous list's last point's frenet s value, since we are running the traj generation in a loop.
+line 109: too close is used as a flag to detect if a car_s value is close to anothers car_s value
+
+line 111: we begin reading localization data of all other car's attributes on the same side of the road.
+line 114-115: we check if the current car checked is on the same lane as our car.
+line 118-121: we get the frenet s_value and magnitude of the velocity of the currently checked car
+line 123 - 130: we check if our car is too close to another car and set the tooclose flag if it is. also we perform a lane change
+
+
+line 135-139: we keep decrementing the speed if the car is too close to another car, we increment the speed of the car if its speed is below the speed limit
+line 148-173: we get the tangent to the pevious x and y point points, and use that to generate new points.
+
+line 176-186: we generate 3 waypoints in the x-y coordinates to be added to the list of waypoints.
+line 188-195: we transform these points
+the spline library used to generate new way points for the car.
